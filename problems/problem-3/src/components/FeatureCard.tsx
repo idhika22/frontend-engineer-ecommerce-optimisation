@@ -1,34 +1,25 @@
-import React from 'react'
+import React from 'react';
+import Card from './Card';
 
-type Product={
-  id:number;
-  name:string;
-  price:number;
-  image:string;
-}
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+};
 
-type Props={
-  product:Product;
-}
-const FeatureCard:React.FC<Props>= ({product}) => {
+type Props = {
+  product: Product;
+};
+
+const FeatureCard: React.FC<Props> = ({ product }) => {
   return (
-    <div className="bg-white p-4 rounded-3xl shadow-md hover:shadow-lg transition">
-     <div className="w-full h-60 mb-4">
-  <img
-    src={product.image}
-    alt={product.name}
-    width={320}
-    height={160}
-    className="w-full h-full object-cover rounded-md"
-    loading='lazy'
-  />
-</div>
-      <h3 className="text-lg font-bold">{product.name}</h3>
-      <p className="text-gray-600 font-semibold">${product.price}</p>
-      
-    </div>
-  )
-}
+    <Card
+      image={product.image}
+      title={product.name}
+      price={product.price}
+    />
+  );
+};
 
-export default FeatureCard
-
+export default FeatureCard;
