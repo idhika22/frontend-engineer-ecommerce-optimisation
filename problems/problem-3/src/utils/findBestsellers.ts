@@ -8,7 +8,6 @@ export const findBestsellers = (productsByCategory: { [category: string]: Produc
     const categoryBest = productsByCategory[category].filter((p) => p.bestSeller);
     bestSellers = [...bestSellers, ...categoryBest];
   });
-  console.log(bestSellers);
 
   return bestSellers;
 };

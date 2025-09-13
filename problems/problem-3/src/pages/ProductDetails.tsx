@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useProducts } from '../context/ProductsContext'
 import { useDispatch } from 'react-redux'
@@ -12,6 +12,35 @@ const ProductDetails = () => {
   const product = Object.keys(productsWithImagesByCategory)
   .map((category) => productsWithImagesByCategory[category].find((p) => p.id == numericId))
   .find(Boolean); // flatten array and get the first non-undefined match
+
+  useEffect(() => {
+  if (!product) return; // only measure if product exists
+
+  // Start mark
+  performance.mark('product-details-start');
+
+  // Measure after next paint
+  const handle = requestAnimationFrame(() => {
+    performance.mark('product-details-end');
+
+    performance.measure(
+      'ProductDetails Page Render',
+      'product-details-start',
+      'product-details-end'
+    );
+
+    const measure = performance.getEntriesByName('ProductDetails Page Render')[0];
+    console.log('ProductDetails page render took:', measure?.duration.toFixed(2), 'ms');
+
+    // Clear marks & measures
+    performance.clearMarks('product-details-start');
+    performance.clearMarks('product-details-end');
+    performance.clearMeasures('ProductDetails Page Render');
+  });
+
+  return () => cancelAnimationFrame(handle);
+}, [product]);
+
 
   if(!product) return <p>Product Not Found</p>
   const [quantity, setQuantity] = useState(0);

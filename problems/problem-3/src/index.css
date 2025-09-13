@@ -1,7 +1,11 @@
 @import "tailwindcss";
 
-body {
-  font-family: "Nunito Sans", sans-serif;
+@font-face {
+  font-family: 'Arviner Heavy';
+  src: url('./assets/fonts/Arviner-Heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 /* Custom class to hide scrollbar */
 .hide-scrollbar::-webkit-scrollbar {

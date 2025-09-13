@@ -12,5 +12,3 @@ Object.keys(productsByCategory).forEach((category) => {
     image: categoryImages[category][p.image],
   }));
 });
-
-console.log(productsWithImagesByCategory);

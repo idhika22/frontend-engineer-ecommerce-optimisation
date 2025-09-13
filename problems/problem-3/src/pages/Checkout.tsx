@@ -3,11 +3,39 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../redux/store'
 import { removeFromCart } from '../redux/cartSlice'
 import { Trash2 } from 'lucide-react';
+import { useEffect } from 'react';
 const Checkout = () => {
   const cartItems=useSelector((state:RootState)=>state.cart.items);
   const dispatch=useDispatch();
 
   const total=cartItems.reduce((sum,item)=>sum+item.price*item.quantity,0);
+
+useEffect(() => {
+  // ✅ Only run if there are cart items
+  if (!cartItems.length) return;
+
+  // Start mark
+  performance.mark('checkout-start');
+
+  // Measure after next paint
+  const handle = requestAnimationFrame(() => {
+    performance.mark('checkout-end');
+
+    performance.measure('Checkout Page Render', 'checkout-start', 'checkout-end');
+
+    const measure = performance.getEntriesByName('Checkout Page Render')[0];
+    console.log('Checkout page render took:', measure?.duration.toFixed(2), 'ms');
+
+    // Clear marks & measures
+    performance.clearMarks('checkout-start');
+    performance.clearMarks('checkout-end');
+    performance.clearMeasures('Checkout Page Render');
+  });
+
+  return () => cancelAnimationFrame(handle); // cleanup
+}, [cartItems]); // re-run if cartItems array changes
+
+
   return (
     <div className="flex justify-center items-start min-h-screen p-6 ">
   <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl min-h-[700px]">

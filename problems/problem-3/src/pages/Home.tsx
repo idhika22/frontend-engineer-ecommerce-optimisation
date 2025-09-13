@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ShopByCategory from '../components/ShopByCategory';
 import { useProducts } from '../context/ProductsContext';
@@ -10,6 +10,34 @@ const FeatureCard = React.lazy(() => import('../components/FeatureCard'));
 const Home : React.FC = () => {
   const productsWithImagesByCategory = useProducts();
   const bestSellers  = findBestsellers(productsWithImagesByCategory); 
+
+useEffect(() => {
+  // ✅ Start mark immediately on mount
+  if (!performance.getEntriesByName('home-page-start').length) {
+    performance.mark('home-page-start');
+  }
+
+  // ✅ Measure after next paint
+  const handle = requestAnimationFrame(() => {
+    performance.mark('home-page-end');
+
+    // measure safely
+    performance.measure('Home Page Render', 'home-page-start', 'home-page-end');
+
+    const measure = performance.getEntriesByName('Home Page Render')[0];
+    console.log('Home page render took:', measure?.duration.toFixed(2), 'ms');
+
+    // ✅ optional: clear after logging
+    performance.clearMarks('home-page-start');
+    performance.clearMarks('home-page-end');
+    performance.clearMeasures('Home Page Render');
+  });
+
+  return () => cancelAnimationFrame(handle); // cleanup
+}, []); // run once on mount
+
+
+
   return (
     <div>
      <section

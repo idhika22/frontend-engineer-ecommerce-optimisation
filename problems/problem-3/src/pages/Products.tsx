@@ -1,4 +1,4 @@
-import React, { useCallback, Suspense } from "react";
+import React, { useCallback, Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { useProducts } from "../context/ProductsContext";
@@ -28,6 +28,31 @@ const Products = () => {
     // Specific category
     products = productsWithImagesByCategory[category] || [];
   }
+
+
+    // ✅ Performance monitoring
+  useEffect(() => {
+    // Start measurement when the page mounts
+    performance.mark("products-page-start");
+
+    // End measurement after the next paint (components rendered)
+    requestAnimationFrame(() => {
+      performance.mark("products-page-end");
+      performance.measure(
+        "Products Page Render",
+        "products-page-start",
+        "products-page-end"
+      );
+
+      const measure = performance.getEntriesByName("Products Page Render")[0];
+      console.log(
+        "Products page render took:",
+        measure.duration.toFixed(2),
+        "ms"
+      );
+    });
+  }, [products.length]); // re-measure if products change
+
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
