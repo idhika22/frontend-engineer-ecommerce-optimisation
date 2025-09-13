@@ -9,7 +9,7 @@ export interface CategoryProducts {
   [category: string]: Product[];
 }
 export const productsByCategory: CategoryProducts = {
-  Laptops: [
+  laptops: [
     {
       id: 1,
       name: "Laptop",
@@ -18,7 +18,7 @@ export const productsByCategory: CategoryProducts = {
       bestSeller: true,
     }
   ],
-  headPhones: [
+  headphones: [
     {
       id: 3,
       name: "Boat wired",
