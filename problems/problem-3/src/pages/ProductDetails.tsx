@@ -14,7 +14,7 @@ const ProductDetails = () => {
   .find(Boolean); // flatten array and get the first non-undefined match
 
   if(!product) return <p>Product Not Found</p>
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const handleIncrease = () => {
     const newQuantity=quantity+1;

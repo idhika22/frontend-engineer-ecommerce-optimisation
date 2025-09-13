@@ -13,17 +13,19 @@ const Home : React.FC = () => {
   return (
     <div>
       <section className="w-full h-200 bg-cover bg-center py-12 px-6 text-center" style={{backgroundImage:`url(${bgImage})`}}>
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-black">Welcome to <span className="text-black">ShopEase</span></h1>
+        <div className="text-left ml-6 mt-60">
+       <h1 className="text-4xl md:text-6xl font-bold mb-4 text-black">Welcome to <span className="text-black">ShopEase</span></h1>
         <p className="text-lg md:text-xl text-gray-700 mb-6">Your one stop shop for everything tech</p>
         <Link to="/products">
           <button className="px-6 py-3 bg-gray-500 text-black rounded-lg shadow-md hover:-translate-y-1 hover:scale-110">
             Shop Now
           </button>
         </Link>
+        </div>
       </section>
 
-      <section className="w-full max-w-10xl py-12 px-6">
-        <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
+      <section className="w-full max-w-10xl py-12 px-6  ">
+        <h2 className="text-3xl font-bold mb-6 flex justify-center ">Best Sellers</h2>
         <Suspense fallback={<div className="text-center py-10">Loading featured products...</div>}>
         <ScrollCarousel>
             {bestSellers.map((product) => (

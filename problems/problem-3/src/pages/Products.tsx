@@ -13,7 +13,7 @@ const Products = () => {
 
   const handleAddToCart = useCallback(
     (product: Product) => {
-      dispatch(addToCart({ ...product, quantity: 1 }));
+      dispatch(addToCart({ ...product, quantity: 0 }));
     },
     [dispatch]
   );

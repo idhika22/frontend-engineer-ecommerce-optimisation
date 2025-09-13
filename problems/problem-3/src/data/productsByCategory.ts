@@ -21,12 +21,12 @@ export const productsByCategory: CategoryProducts = {
   headPhones: [
     {
       id: 3,
-      name: "Boat wireless",
+      name: "Boat wired",
       price: 50000,
       image: "earphones.jpg",
       bestSeller: true,
     },
-    { id: 4, name: "Noise Buds", price: 45000, image: "earpods.jpg" },
+    { id: 4, name: "Noise Buds", price: 45000, image: "earpods.jpg", bestSeller:true },
     { id: 5, name: "airpods", price: 45000, image: "headphone.jpg" },
   ],
   watches: [
@@ -35,6 +35,15 @@ export const productsByCategory: CategoryProducts = {
       name: "Titan",
       price: 60000,
       image: "watch.jpg",
+      bestSeller: true,
+    },
+  ],
+  television: [
+    {
+      id: 7,
+      name: "SmartTV",
+      price: 60000,
+      image: "smartTv1.jpg",
       bestSeller: true,
     },
   ],

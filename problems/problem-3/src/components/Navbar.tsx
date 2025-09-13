@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
+import { ShoppingCart } from 'lucide-react';
 const Navbar = () => {
   const cartItems=useSelector((state:RootState)=>state.cart.items);
  const distinctCount=cartItems.length;
@@ -19,7 +20,7 @@ const Navbar = () => {
 
         {/*Cart Icon*/}
         <Link to="/checkout" className="relative">
-        <span className="text-2xl">🛒</span>
+         <ShoppingCart />
         {distinctCount > 0 && ( <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs px-2">{distinctCount}</span>)}
         </Link>
       </div>

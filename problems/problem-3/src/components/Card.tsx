@@ -11,7 +11,7 @@ type CardProps = {
  
 const Card: React.FC<CardProps> = ({ id, image, title, price, actionButton }) => {
   return (
-    <div className="bg-white p-4 rounded-3xl shadow-md hover:shadow-lg transition">
+    <div className="bg-white p-4  shadow-md hover:shadow-lg transition">
       <Link to={`/products/${id}`}>
       <div className="w-full h-60 mb-4">
         <img 

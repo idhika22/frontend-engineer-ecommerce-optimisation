@@ -12,7 +12,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(({ product, onAddToCa
   const actionButton = (
     <button
       onClick={onAddToCart}
-      className="bg-blue-500 text-white px-3 py-1 rounded"
+      className=" bg-gray-500 text-white px-3 py-1 rounded"
     >
       Add to Cart
     </button>

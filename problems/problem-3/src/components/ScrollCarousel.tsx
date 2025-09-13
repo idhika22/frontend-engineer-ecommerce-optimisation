@@ -30,7 +30,7 @@ const ScrollCarousel: React.FC<ScrollCarouselProps> = ({ children }) => {
       <div className="overflow-hidden">
         <div
           ref={carouselRef}
-          className="flex overflow-x-auto scroll-smooth hide-scrollbar"
+          className="flex overflow-x-auto scroll-smooth hide-scrollbar bg-white ml-20 mr-20"
         >
           {children.map((child, index) => (
             <div
