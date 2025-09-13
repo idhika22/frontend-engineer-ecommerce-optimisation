@@ -21,7 +21,7 @@ const ScrollCarousel: React.FC<ScrollCarouselProps> = ({ children }) => {
       {/* Left Button */}
       <button
         onClick={() => scroll('left')}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2  p-4 text-3xl"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 p-4 text-3xl "
       >
         ‹
       </button>
@@ -30,12 +30,12 @@ const ScrollCarousel: React.FC<ScrollCarouselProps> = ({ children }) => {
       <div className="overflow-hidden">
         <div
           ref={carouselRef}
-          className="flex overflow-x-auto scroll-smooth hide-scrollbar bg-white ml-20 mr-20"
+          className="flex overflow-x-auto scroll-smooth hide-scrollbar bg-white"
         >
           {children.map((child, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-1/4 p-10" // 4 cards visible at a time
+              className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
             >
               {child}
             </div>

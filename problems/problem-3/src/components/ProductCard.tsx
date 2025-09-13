@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(({ product, onAddToCa
   );
 
   return (
-    <Link to={'/products'}>
+    
       <Card
         id={product.id}
         image={product.image} 
@@ -27,7 +27,6 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(({ product, onAddToCa
         price={product.price}
         actionButton={actionButton}
       />
-    </Link>
   );
 });
 

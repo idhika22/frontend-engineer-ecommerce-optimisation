@@ -1,6 +1,6 @@
 
 export const importAllCategoryImages = async () => {
-  const modules = import.meta.glob("../assets/products/**/*.{png,jpg,jpeg,svg}", { eager: true, as: "url" });
+  const modules = import.meta.glob("../assets/products/**/*.{png,jpg,jpeg,svg,avif}", { eager: true, as: "url" });
   const imagesByCategory: { [category: string]: { [fileName: string]: string } } = {};
 
   Object.keys(modules).forEach((path) => {

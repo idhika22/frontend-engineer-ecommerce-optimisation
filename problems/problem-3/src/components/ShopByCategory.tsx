@@ -5,9 +5,9 @@ import { useProducts } from "../context/ProductsContext";
 const ShopByCategory: React.FC = () => {
   const productsWithImagesByCategory = useProducts();
   return (
-    <div className="p-6 bg-white ml-20 mr-20 p-10" >
-      <h2 className="text-3xl font-bold text-center mb-8 pb-10">Shop by Category</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 justify-items-center">
+    <div className="p-6" >
+      <h2 className="text-3xl font-bold text-center mb-6 sm:text-4xl">Shop by Category</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center bg-white md:ml-20 md:mr-20 p-10">
         {Object.keys(productsWithImagesByCategory).map((category) => {
           let firstProduct = productsWithImagesByCategory[category][0]; // 👈 pick only first
           return (
