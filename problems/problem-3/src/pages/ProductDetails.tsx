@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { userProducts } from '../context/ProductsContext'
+import { useProducts } from '../context/ProductsContext'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cartSlice'
 const ProductDetails = () => {
   const {id}=useParams();
-  const {products}=userProducts();
+  const numericId = Number(id); // converts string to number
+  const productsWithImagesByCategory = useProducts();
   const dispatch=useDispatch();
 
-  const product=products.find(p=>p.id===Number(id));
+  const product = Object.keys(productsWithImagesByCategory)
+  .map((category) => productsWithImagesByCategory[category].find((p) => p.id == numericId))
+  .find(Boolean); // flatten array and get the first non-undefined match
+
   if(!product) return <p>Product Not Found</p>
   const [quantity, setQuantity] = useState(0);
 

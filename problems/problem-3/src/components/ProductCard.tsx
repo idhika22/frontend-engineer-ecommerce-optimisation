@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Card from './Card';
-import type { Product } from "../context/ProductsContext";
+import type { Product } from "../data/productsByCategory";
 
 interface ProductCardProps {
   product: Product;

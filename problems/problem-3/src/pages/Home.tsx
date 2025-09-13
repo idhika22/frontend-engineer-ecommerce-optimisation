@@ -1,21 +1,15 @@
 import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import laptopImage from "../assets/laptop.jpg"
-import smartwatchImage from "../assets/watch.jpg"
-import phoneImage from "../assets/smartphone.jpg"
-import cameraImage from "../assets/camera.jpg"
+import ShopByCategory from '../components/ShopByCategory';
+import { useProducts } from '../context/ProductsContext';
+import { findBestsellers } from '../utils/findBestsellers';
+import ScrollCarousel from '../components/ScrollCarousel';
+import bgImage from '../assets/homescreen.avif'
 const FeatureCard = React.lazy(() => import('../components/FeatureCard'));
-const Home : React.FC = () => {
- 
 
-  const products=[
-    { id:1,  name:"Laptop",      price:89999,image:laptopImage},
-    { id: 2, name: "Smartphone", price: 49999, image: phoneImage },
-    { id: 3, name: "Smartwatch", price: 10999, image: smartwatchImage},
-    { id: 4, name: "Camera", price: 55999, image: cameraImage },
-    
-    
-  ];
+const Home : React.FC = () => {
+  const productsWithImagesByCategory = useProducts();
+  const bestSellers  = findBestsellers(productsWithImagesByCategory); 
   return (
     <div>
       <section className="w-full h-200 bg-cover bg-center py-12 px-6 text-center" style={{backgroundImage:`url(${bgImage})`}}>
@@ -30,15 +24,16 @@ const Home : React.FC = () => {
 
       <section className="w-full max-w-10xl py-12 px-6">
         <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
-
-        <Suspense fallback={<div>Loading featured products...</div>}>
-          <ScrollCarousel>
-            {products.map((product) => (
+        <Suspense fallback={<div className="text-center py-10">Loading featured products...</div>}>
+        <ScrollCarousel>
+            {bestSellers.map((product) => (
               <FeatureCard key={product.id} product={product} />
             ))}
-          </ScrollCarousel>
+            </ScrollCarousel>
         </Suspense>
       </section>
+
+      <ShopByCategory/>
     </div>
   );
 };
