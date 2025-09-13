@@ -15,7 +15,6 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-6">
           <Link to="/" className=" text-lg  font-semibold  hover:text-blue-600">Home</Link>
           <Link to="/products" className="text-lg font-semibold hover:text-blue-600">Products</Link>
-          <Link to="/checkout" className="text-lg font-semibold hover:text-blue-600">Checkout</Link>
         </div>
 
         {/*Cart Icon*/}

@@ -12,7 +12,7 @@ const Checkout = lazy(() => import('./pages/Checkout'));
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-slate-300">
+      <div className="flex flex-col min-h-screen bg-slate-100">
         <Navbar />
         <main className="flex-1">
           <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>

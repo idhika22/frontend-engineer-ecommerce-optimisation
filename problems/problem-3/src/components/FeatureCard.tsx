@@ -15,6 +15,7 @@ type Props = {
 const FeatureCard: React.FC<Props> = ({ product }) => {
   return (
     <Card
+      id={product.id}
       image={product.image}
       title={product.name}
       price={product.price}

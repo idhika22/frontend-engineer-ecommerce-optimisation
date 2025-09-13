@@ -19,9 +19,10 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(({ product, onAddToCa
   );
 
   return (
-    <Link to={`/products/${product.id}`}>
+    <Link to={'/products'}>
       <Card
-        image={product.image}
+        id={product.id}
+        image={product.image} 
         title={product.name}
         price={product.price}
         actionButton={actionButton}

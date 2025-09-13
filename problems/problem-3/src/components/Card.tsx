@@ -1,17 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type CardProps = {
+  id:number;
   image: string;
   title: string;
   price: number;
   actionButton?: React.ReactNode; 
 };
-
-const Card: React.FC<CardProps> = ({ image, title, price, actionButton }) => {
+ 
+const Card: React.FC<CardProps> = ({ id, image, title, price, actionButton }) => {
   return (
     <div className="bg-white p-4 rounded-3xl shadow-md hover:shadow-lg transition">
+      <Link to={`/products/${id}`}>
       <div className="w-full h-60 mb-4">
-        <img
+        <img 
           src={image}
           alt={title}
           width={320}
@@ -20,6 +23,7 @@ const Card: React.FC<CardProps> = ({ image, title, price, actionButton }) => {
           loading="lazy"
         />
       </div>
+      </Link>
 
       <h3 className="text-lg font-bold">{title}</h3>
       <p className="text-gray-600 font-semibold">${price}</p>
